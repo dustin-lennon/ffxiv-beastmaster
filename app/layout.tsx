@@ -13,7 +13,7 @@ export default function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="bg-ffxiv-dark text-ffxiv-text font-ffxiv min-h-screen">
         <header className="border-b border-ffxiv-border bg-ffxiv-panel px-6 py-4">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
