@@ -1,7 +1,6 @@
 "use client";
 
 import { useTheme } from "@/app/theme-provider";
-import { useContext } from "react";
 
 export function ThemeToggle() {
   try {
