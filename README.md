@@ -7,17 +7,17 @@ Faithfully recreates the in-game Master's Bestiary UI with beast tracking, map l
 ## Development
 
 ```bash
-npm install       # Install dependencies
-npm run dev       # Start local dev server
-npm run lint      # Run ESLint
+bun install       # Install dependencies
+bun run dev       # Start local dev server
+bun run lint      # Run ESLint
 ```
 
 ## Deployment
 
 ```bash
-npm run pages:build   # Build for Cloudflare Workers
-npm run preview       # Preview locally via Wrangler
-npm run deploy        # Deploy to Cloudflare Workers
+bun run pages:build   # Build for Cloudflare Workers
+bun run preview       # Preview locally via Wrangler
+bun run deploy        # Deploy to Cloudflare Workers
 ```
 
 ## Stack
