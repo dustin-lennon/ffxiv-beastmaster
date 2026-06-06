@@ -44,6 +44,7 @@ export default function RootLayout({
             <div className="max-w-7xl mx-auto flex flex-col items-center gap-2 text-center text-xs text-light-muted dark:text-ffxiv-muted">
               <p>© SQUARE ENIX CO., LTD. All Rights Reserved.</p>
               <p>FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.</p>
+              <p>Created by Caspian Nightworth of Brynhildr</p>
               <div className="flex items-center gap-3 mt-1">
                 <span>© {new Date().getFullYear()} Tamer&apos;s Compendium</span>
                 <span className="text-light-border dark:text-ffxiv-border">·</span>
