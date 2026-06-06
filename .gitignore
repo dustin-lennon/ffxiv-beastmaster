@@ -10,3 +10,4 @@ out/
 dist/
 .wrangler/
 bun.lockb
+.mcp.json

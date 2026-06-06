@@ -2,6 +2,8 @@
 
 A web application for tracking captured beasts in Final Fantasy XIV's Beastmaster limited job (Patch 7.56). Faithfully recreates the in-game Master's Bestiary UI.
 
+> **New to this project?** Read `HANDOFF.md` first — it contains the full research history, datamining findings, UI reference details, and decision log from before Claude Code was introduced.
+
 ## Package Manager
 
 **Use `bun` exclusively.** Do NOT use npm, pnpm, or yarn.
@@ -53,7 +55,27 @@ types/                    # TypeScript interfaces
 
 **Always branch from `develop` for new features.**
 
-## Versioning
+## Pull Request Workflow
+
+All work must go through PRs — never commit directly to `main` or `develop`.
+
+**Feature workflow:**
+1. Work on `feature/*` branch
+2. PR → `develop` (squash merge)
+3. When milestone is complete, PR `develop` → `main` (squash merge)
+4. release-please detects conventional commits on `main` and opens a Release PR automatically
+5. Merge the Release PR → triggers deploy to Cloudflare Workers
+
+**PR titles must follow Conventional Commits** so release-please can version correctly:
+- `feat: description` → minor bump
+- `fix: description` → patch bump
+- `feat!: description` or `BREAKING CHANGE` in body → major bump
+
+**Hotfix workflow:**
+1. Branch `hotfix/*` off `main`
+2. PR → `main` (squash merge)
+3. PR → `develop` to backport
+
 
 Follows [Semantic Versioning](https://semver.org):
 - `MAJOR` — breaking changes
