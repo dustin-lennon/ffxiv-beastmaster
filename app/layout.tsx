@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { Providers } from "./providers";
 import { ThemeToggle } from "@/components/theme-toggle";
+import pkg from "../package.json";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-light-bg text-light-text font-ffxiv min-h-screen dark:bg-ffxiv-dark dark:text-ffxiv-text">
+      <body className="bg-light-bg text-light-text font-ffxiv min-h-screen flex flex-col dark:bg-ffxiv-dark dark:text-ffxiv-text">
         <Providers>
           <header className="border-b border-light-border bg-light-panel px-6 py-4 dark:border-ffxiv-border dark:bg-ffxiv-panel">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -36,9 +37,31 @@ export default function RootLayout({
               </nav>
             </div>
           </header>
-          <main className="max-w-7xl mx-auto px-6 py-8">
+          <main className="max-w-7xl mx-auto px-6 py-8 flex-1">
             {children}
           </main>
+          <footer className="border-t border-light-border bg-light-panel mt-auto px-6 py-6 dark:border-ffxiv-border dark:bg-ffxiv-panel">
+            <div className="max-w-7xl mx-auto flex flex-col items-center gap-2 text-center text-xs text-light-muted dark:text-ffxiv-muted">
+              <p>© SQUARE ENIX CO., LTD. All Rights Reserved.</p>
+              <p>FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.</p>
+              <div className="flex items-center gap-3 mt-1">
+                <span>© {new Date().getFullYear()} Tamer&apos;s Compendium</span>
+                <span className="text-light-border dark:text-ffxiv-border">·</span>
+                <span>v{pkg.version}</span>
+                {/* Discord link — uncomment when server is ready
+                <span className="text-light-border dark:text-ffxiv-border">·</span>
+                <a
+                  href="https://discord.gg/YOUR_INVITE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-ffxiv-gold transition-colors flex items-center gap-1"
+                >
+                  Discord
+                </a>
+                */}
+              </div>
+            </div>
+          </footer>
         </Providers>
       </body>
     </html>
