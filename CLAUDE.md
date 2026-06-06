@@ -21,8 +21,8 @@ bun run deploy        # Deploy to Cloudflare Workers
 
 ## Stack
 
-- **Framework:** Next.js 16.2.6 (App Router) + TypeScript
-- **Styling:** Tailwind CSS
+- **Framework:** Next.js 16.2.7 (App Router) + TypeScript + Turbopack
+- **Styling:** Tailwind CSS 4
 - **Package Manager:** Bun
 - **Deployment:** Cloudflare Workers via `@cloudflare/next-on-pages`
 - **Versioning:** Semantic Versioning (current: 0.1.0)
@@ -88,8 +88,10 @@ gh pr create \
   --label "enhancement" \
   --milestone "v0.x.0" \
   --title "feat: description" \
-  --body "Closes #N"
+  --body "$(cat .github/pull_request_template.md)"
 ```
+
+The PR body must use `.github/pull_request_template.md` as its base. Fill in the Summary and check the appropriate Type of Change box before submitting. The Closes #N reference must match the issue number for the feature being completed.
 
 Follows [Semantic Versioning](https://semver.org):
 - `MAJOR` — breaking changes
