@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint . --max-warnings=0",
     "pages:build": "bunx @cloudflare/next-on-pages",
     "preview": "bun run pages:build && wrangler pages dev",
     "deploy": "bun run pages:build && wrangler pages deploy"
@@ -19,12 +19,17 @@
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.12",
+    "@eslint/js": "^10.0.1",
+    "@next/eslint-plugin-next": "^16.2.7",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.60.1",
+    "@typescript-eslint/parser": "^8.60.1",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.2.7",
+    "eslint-plugin-next": "^0.0.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.0.0",
     "wrangler": "^4.0.0"
