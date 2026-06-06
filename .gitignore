@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.vercel/
+out/
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local
+.DS_Store
+dist/
+.wrangler/
+bun.lockb
