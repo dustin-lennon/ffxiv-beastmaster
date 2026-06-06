@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { Providers } from "./providers";
 import { ThemeToggle } from "@/components/theme-toggle";
 import "./globals.css";
@@ -25,9 +26,9 @@ export default function RootLayout({
               </h1>
               <nav className="flex items-center gap-6 text-sm">
                 <div className="flex gap-4">
-                  <a href="/" className="text-light-muted hover:text-ffxiv-gold transition-colors dark:text-ffxiv-muted dark:hover:text-ffxiv-gold">Home</a>
-                  <a href="/bestiary" className="text-light-muted hover:text-ffxiv-gold transition-colors dark:text-ffxiv-muted dark:hover:text-ffxiv-gold">Bestiary</a>
-                  <a href="/map" className="text-light-muted hover:text-ffxiv-gold transition-colors dark:text-ffxiv-muted dark:hover:text-ffxiv-gold">Map</a>
+                  <Link href="/" className="text-light-muted hover:text-ffxiv-gold transition-colors dark:text-ffxiv-muted dark:hover:text-ffxiv-gold">Home</Link>
+                  <Link href="/bestiary" className="text-light-muted hover:text-ffxiv-gold transition-colors dark:text-ffxiv-muted dark:hover:text-ffxiv-gold">Bestiary</Link>
+                  <Link href="/map" className="text-light-muted hover:text-ffxiv-gold transition-colors dark:text-ffxiv-muted dark:hover:text-ffxiv-gold">Map</Link>
                 </div>
                 <ThemeToggle />
               </nav>
