@@ -25,6 +25,7 @@ export default function RootLayout({
               </h1>
               <nav className="flex items-center gap-6 text-sm">
                 <div className="flex gap-4">
+                  <a href="/" className="text-light-muted hover:text-ffxiv-gold transition-colors dark:text-ffxiv-muted dark:hover:text-ffxiv-gold">Home</a>
                   <a href="/bestiary" className="text-light-muted hover:text-ffxiv-gold transition-colors dark:text-ffxiv-muted dark:hover:text-ffxiv-gold">Bestiary</a>
                   <a href="/map" className="text-light-muted hover:text-ffxiv-gold transition-colors dark:text-ffxiv-muted dark:hover:text-ffxiv-gold">Map</a>
                 </div>
