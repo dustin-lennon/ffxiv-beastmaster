@@ -2,6 +2,8 @@
 
 A web application for tracking captured beasts in Final Fantasy XIV's Beastmaster limited job (Patch 7.56). Faithfully recreates the in-game Master's Bestiary UI.
 
+> **New to this project?** Read `HANDOFF.md` first — it contains the full research history, datamining findings, UI reference details, and decision log from before Claude Code was introduced.
+
 ## Package Manager
 
 **Use `bun` exclusively.** Do NOT use npm, pnpm, or yarn.
