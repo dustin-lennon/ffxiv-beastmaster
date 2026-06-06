@@ -1,8 +1,8 @@
-# FFXIV Beastmaster Bestiary
+# Tamer's Compendium
 
-Track your captured beasts for the **Beastmaster** limited job in Final Fantasy XIV (Patch 7.56).
+The community hub for Final Fantasy XIV's **Beastmaster** limited job (Patch 7.56).
 
-Faithfully recreates the in-game Master's Bestiary UI with beast tracking, map locations, and ability details.
+Bestiary tracker, guides, gear lists, video embeds, and beast spawn maps — all in one place.
 
 ## Development
 
@@ -22,14 +22,15 @@ bun run deploy        # Deploy to Cloudflare Workers
 
 ## Stack
 
-- Next.js 15 (App Router) + TypeScript
-- Tailwind CSS
+- Next.js 16.2.7 (App Router) + TypeScript + Turbopack
+- Tailwind CSS 4
 - Cloudflare Workers via `@cloudflare/next-on-pages`
+- Cloudflare D1 (SQLite) + Drizzle ORM
 
 ## Data
 
-Beast data is sourced from the [ffxiv-datamining](https://github.com/xivapi/ffxiv-datamining) repository and populated post-Patch 7.56 (September 8, 2026).
+Beast data sourced from [ffxiv-datamining](https://github.com/xivapi/ffxiv-datamining). Populates post-Patch 7.56 (September 8, 2026).
 
 ## Contributing
 
-This project uses [Gitflow](https://nvie.com/posts/a-successful-git-branching-model/) and [Conventional Commits](https://www.conventionalcommits.org). See `.github/ISSUES.md` for the full feature roadmap.
+Uses [Gitflow](https://nvie.com/posts/a-successful-git-branching-model/) and [Conventional Commits](https://www.conventionalcommits.org).

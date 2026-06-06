@@ -217,11 +217,14 @@ Requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` in GitHub secrets fo
 | `feature/1-project-foundation` | #1 | v0.1.0 | ✅ Done |
 | `feature/2-beast-data-pipeline` | #2 | v0.2.0 | Blocked until Sept 8, 2026 |
 | `feature/3-bestiary-ui` | #3 | v0.3.0 | In progress |
-| `feature/8-database` | #13 | v0.2.5 | ⚠️ Must complete before feature/4 |
+| `feature/8-database` | #13 | v0.2.5 | ⚠️ Must complete before feature/4, 9, 10, 11 |
 | `feature/4-beast-tracker` | #4 | v0.3.0 | Requires feature/8-database |
 | `feature/5-map-locations` | #5 | v0.4.0 | |
 | `feature/6-ability-viewer` | #6 | v0.4.0 | |
 | `feature/7-cloudflare-deployment` | #7 | v1.0.0 | |
+| `feature/9-guides` | #14 | v0.5.0 | Requires feature/8-database |
+| `feature/10-gear` | #15 | v0.5.0 | Requires feature/8-database |
+| `feature/11-videos` | #16 | v0.5.0 | Requires feature/8-database |
 
 ## Database
 

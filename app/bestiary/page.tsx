@@ -21,9 +21,6 @@ export default function BestiaryPage() {
 
   return (
     <div className="flex flex-col gap-2">
-      <h2 className="text-lg font-bold text-ffxiv-gold tracking-wide">
-        ✦ Master&apos;s Bestiary
-      </h2>
       <div className="flex gap-6 items-start">
         {/* Left: grid */}
         <div className="w-64 shrink-0 rounded border border-ffxiv-border bg-ffxiv-panel p-3">
@@ -48,3 +45,4 @@ export default function BestiaryPage() {
     </div>
   );
 }
+
