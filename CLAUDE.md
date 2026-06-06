@@ -19,8 +19,8 @@ bun run deploy        # Deploy to Cloudflare Workers
 
 ## Stack
 
-- **Framework:** Next.js 15 (App Router) + TypeScript
-- **Styling:** Tailwind CSS
+- **Framework:** Next.js 16.2.7 (App Router) + TypeScript + Turbopack
+- **Styling:** Tailwind CSS 4
 - **Package Manager:** Bun
 - **Deployment:** Cloudflare Workers via `@cloudflare/next-on-pages`
 - **Versioning:** Semantic Versioning (current: 0.1.0)
