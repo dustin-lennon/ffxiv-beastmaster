@@ -76,6 +76,20 @@ All work must go through PRs — never commit directly to `main` or `develop`.
 2. PR → `main` (squash merge)
 3. PR → `develop` to backport
 
+**Every PR must have:**
+- **Assignee:** `dustin-lennon`
+- **Label:** matching the type of work (e.g. `enhancement`, `bug`, `infrastructure`)
+- **Milestone:** matching the target version (e.g. `v0.1.0`) — use the milestone that corresponds to the feature branch being worked on per the Feature Branch → Issue Mapping table below
+
+When opening a PR with `gh pr create`, always include these flags:
+```bash
+gh pr create \
+  --assignee dustin-lennon \
+  --label "enhancement" \
+  --milestone "v0.x.0" \
+  --title "feat: description" \
+  --body "Closes #N"
+```
 
 Follows [Semantic Versioning](https://semver.org):
 - `MAJOR` — breaking changes
