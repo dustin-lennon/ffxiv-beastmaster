@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { ThemeProvider } from "./theme-provider";
+import { Providers } from "./providers";
 import { ThemeToggle } from "@/components/theme-toggle";
 import "./globals.css";
 
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-light-bg text-light-text font-ffxiv min-h-screen dark:bg-ffxiv-dark dark:text-ffxiv-text">
-        <ThemeProvider>
+        <Providers>
           <header className="border-b border-light-border bg-light-panel px-6 py-4 dark:border-ffxiv-border dark:bg-ffxiv-panel">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
               <h1 className="text-ffxiv-gold text-xl font-bold tracking-wide">
@@ -35,7 +35,7 @@ export default function RootLayout({
           <main className="max-w-7xl mx-auto px-6 py-8">
             {children}
           </main>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

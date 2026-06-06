@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Dark / FFXIV palette */
+  --color-ffxiv-dark: #0d0d0d;
+  --color-ffxiv-panel: #1a1a2e;
+  --color-ffxiv-border: #2a2a4a;
+  --color-ffxiv-text: #e8e0d0;
+  --color-ffxiv-gold: #c8a84b;
+  --color-ffxiv-muted: #8a8070;
+
+  /* Light palette */
+  --color-light-bg: #f5f0e8;
+  --color-light-panel: #ede7dc;
+  --color-light-border: #d0c8b8;
+  --color-light-text: #2a2520;
+  --color-light-muted: #6a6058;
+
+  /* Font */
+  --font-ffxiv: "Georgia", "Times New Roman", serif;
+}
