@@ -212,12 +212,29 @@ Requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` in GitHub secrets fo
 
 ## Feature Branch → Issue Mapping
 
-| Branch | Issue | Milestone |
-|--------|-------|-----------|
-| `feature/1-project-foundation` | #1 | v0.1.0 |
-| `feature/2-beast-data-pipeline` | #2 | v0.2.0 |
-| `feature/3-bestiary-ui` | #3 | v0.3.0 |
-| `feature/4-beast-tracker` | #4 | v0.3.0 |
-| `feature/5-map-locations` | #5 | v0.4.0 |
-| `feature/6-ability-viewer` | #6 | v0.4.0 |
-| `feature/7-cloudflare-deployment` | #7 | v1.0.0 |
+| Branch | Issue | Milestone | Notes |
+|--------|-------|-----------|-------|
+| `feature/1-project-foundation` | #1 | v0.1.0 | ✅ Done |
+| `feature/2-beast-data-pipeline` | #2 | v0.2.0 | Blocked until Sept 8, 2026 |
+| `feature/3-bestiary-ui` | #3 | v0.3.0 | In progress |
+| `feature/8-database` | #13 | v0.2.5 | ⚠️ Must complete before feature/4 |
+| `feature/4-beast-tracker` | #4 | v0.3.0 | Requires feature/8-database |
+| `feature/5-map-locations` | #5 | v0.4.0 | |
+| `feature/6-ability-viewer` | #6 | v0.4.0 | |
+| `feature/7-cloudflare-deployment` | #7 | v1.0.0 | |
+
+## Database
+
+**Stack:** Cloudflare D1 (SQLite, edge-native) + Drizzle ORM
+
+D1 chosen over Neon/Postgres because app deploys to Cloudflare Workers — no external DB dependency, zero cold-start latency. Same Drizzle ORM patterns as health-journal, only adapter differs (`drizzle-orm/d1`).
+
+Schema lives in `src/db/schema.ts`. After any schema change:
+```bash
+bun run db:push    # applies to D1
+bun run db:studio  # Drizzle Studio UI
+```
+
+Tables:
+- `beast_captures` — user's captured beast IDs (beast_number, captured_at)
+- `user_settings` — key/value store for preferences
