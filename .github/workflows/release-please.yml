@@ -22,10 +22,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
 
-  # Deploy only fires when release-please actually creates a release
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy to Cloudflare
+    name: Deploy to Cloudflare Workers
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
     steps:
@@ -49,7 +48,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy .vercel/output/static --project-name=ffxiv-beastmaster
 
-      - name: Comment deployment URL on release
+      - name: Comment deployment on release
         uses: actions/github-script@v7
         with:
           script: |
@@ -57,5 +56,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               commit_sha: context.sha,
-              body: `🚀 Deployed version \`${{ needs.release-please.outputs.tag_name }}\` to Cloudflare Workers`
+              body: `🚀 Deployed \`${{ needs.release-please.outputs.tag_name }}\` to Cloudflare Workers`
             })
