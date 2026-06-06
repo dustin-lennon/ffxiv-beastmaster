@@ -29,52 +29,49 @@ jobs:
               assignees: ['dustin-lennon']
             });
 
-            // Auto-label and auto-milestone based on branch name
-            const branchMilestoneMap = {
-              'feature/1-project-foundation':    { label: 'enhancement',    milestone: 'v0.1.0' },
-              'feature/2-beast-data-pipeline':   { label: 'data-pipeline',  milestone: 'v0.2.0' },
-              'feature/8-database':              { label: 'infrastructure',  milestone: 'v0.2.5' },
-              'feature/3-bestiary-ui':           { label: 'ui',             milestone: 'v0.3.0' },
-              'feature/4-beast-tracker':         { label: 'ui',             milestone: 'v0.3.0' },
-              'feature/5-map-locations':         { label: 'ui',             milestone: 'v0.4.0' },
-              'feature/6-ability-viewer':        { label: 'ui',             milestone: 'v0.4.0' },
-              'feature/7-cloudflare-deployment': { label: 'infrastructure',  milestone: 'v1.0.0' },
-              'feature/9-guides':                { label: 'enhancement',    milestone: 'v0.5.0' },
-              'feature/10-gear':                 { label: 'enhancement',    milestone: 'v0.5.0' },
-              'feature/11-videos':               { label: 'enhancement',    milestone: 'v0.5.0' },
-            };
+            // Parse issue number from branch name: feature/N-name or hotfix/N-name
+            const issueMatch = branch.match(/(?:feature|hotfix)\/(\d+)-/);
 
-            const mapping = branchMilestoneMap[branch];
+            if (issueMatch) {
+              const issueNumber = parseInt(issueMatch[1], 10);
 
-            if (mapping) {
-              // Add label
-              await github.rest.issues.addLabels({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: pr.number,
-                labels: [mapping.label]
-              });
-
-              // Find and set milestone
-              const milestones = await github.rest.issues.listMilestones({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                state: 'open'
-              });
-
-              const milestone = milestones.data.find(m => m.title === mapping.milestone);
-              if (milestone) {
-                await github.rest.issues.update({
+              try {
+                // Fetch the linked issue to get its milestone and labels
+                const issue = await github.rest.issues.get({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
-                  issue_number: pr.number,
-                  milestone: milestone.number
+                  issue_number: issueNumber
                 });
-              }
 
-              console.log(`✓ Assigned dustin-lennon, label: ${mapping.label}, milestone: ${mapping.milestone}`);
+                // Copy milestone from issue → PR
+                if (issue.data.milestone) {
+                  await github.rest.issues.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: pr.number,
+                    milestone: issue.data.milestone.number
+                  });
+                  console.log(`✓ Milestone set to ${issue.data.milestone.title} (from issue #${issueNumber})`);
+                }
+
+                // Copy labels from issue → PR
+                if (issue.data.labels.length > 0) {
+                  const labelNames = issue.data.labels.map(l => l.name);
+                  await github.rest.issues.addLabels({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: pr.number,
+                    labels: labelNames
+                  });
+                  console.log(`✓ Labels copied: ${labelNames.join(', ')}`);
+                }
+
+                console.log(`✓ Assigned dustin-lennon, synced from issue #${issueNumber}`);
+              } catch (e) {
+                console.log(`⚠ Issue #${issueNumber} not found, skipping milestone/label sync`);
+              }
             } else {
-              // Hotfix or develop→main PR — add enhancement label as default
+              // No issue number in branch — apply default label
               const label = branch.startsWith('hotfix/') ? 'bug' : 'enhancement';
               await github.rest.issues.addLabels({
                 owner: context.repo.owner,
@@ -82,5 +79,5 @@ jobs:
                 issue_number: pr.number,
                 labels: [label]
               });
-              console.log(`✓ Assigned dustin-lennon, label: ${label} (branch not in map)`);
+              console.log(`✓ Assigned dustin-lennon, label: ${label} (no issue number in branch)`);
             }
