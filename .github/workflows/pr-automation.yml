@@ -31,13 +31,17 @@ jobs:
 
             // Auto-label and auto-milestone based on branch name
             const branchMilestoneMap = {
-              'feature/1-project-foundation':    { label: 'enhancement',   milestone: 'v0.1.0' },
-              'feature/2-beast-data-pipeline':   { label: 'data-pipeline', milestone: 'v0.2.0' },
-              'feature/3-bestiary-ui':           { label: 'ui',            milestone: 'v0.3.0' },
-              'feature/4-beast-tracker':         { label: 'ui',            milestone: 'v0.3.0' },
-              'feature/5-map-locations':         { label: 'ui',            milestone: 'v0.4.0' },
-              'feature/6-ability-viewer':        { label: 'ui',            milestone: 'v0.4.0' },
-              'feature/7-cloudflare-deployment': { label: 'infrastructure', milestone: 'v1.0.0' },
+              'feature/1-project-foundation':    { label: 'enhancement',    milestone: 'v0.1.0' },
+              'feature/2-beast-data-pipeline':   { label: 'data-pipeline',  milestone: 'v0.2.0' },
+              'feature/8-database':              { label: 'infrastructure',  milestone: 'v0.2.5' },
+              'feature/3-bestiary-ui':           { label: 'ui',             milestone: 'v0.3.0' },
+              'feature/4-beast-tracker':         { label: 'ui',             milestone: 'v0.3.0' },
+              'feature/5-map-locations':         { label: 'ui',             milestone: 'v0.4.0' },
+              'feature/6-ability-viewer':        { label: 'ui',             milestone: 'v0.4.0' },
+              'feature/7-cloudflare-deployment': { label: 'infrastructure',  milestone: 'v1.0.0' },
+              'feature/9-guides':                { label: 'enhancement',    milestone: 'v0.5.0' },
+              'feature/10-gear':                 { label: 'enhancement',    milestone: 'v0.5.0' },
+              'feature/11-videos':               { label: 'enhancement',    milestone: 'v0.5.0' },
             };
 
             const mapping = branchMilestoneMap[branch];
